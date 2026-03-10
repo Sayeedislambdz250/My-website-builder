@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Website Builder</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f4f7fa;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+            color: #333;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        form {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            text-align: left;
+        }
+        label {
+            display: block;
+            margin: 15px 0 5px;
+            font-weight: bold;
+            color: #34495e;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #bdc3c7;
+            border-radius: 8px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        button {
+            background: #27ae60;
+            color: white;
+            border: none;
+            padding: 14px 30px;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover {
+            background: #219653;
+        }
+        #formSection {
+            display: none;
+        }
+        #result {
+            margin-top: 40px;
+        }
+        .section-title {
+            text-align: center;
+            margin: 30px 0 15px;
+            color: #2c3e50;
+        }
+        small {
+            color: #777;
+            font-size: 0.9em;
+        }
+        .skill-item {
+            display: flex;
+            gap: 10px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Welcome to My Website Builder!</h1>
+    <p>Build your professional website easily.</p>
+    <button id="startBtn">Get Started</button>
+
+    <div id="formSection">
+        <h2>Provide Your Website Details</h2>
+        
+        <form id="siteForm">
+
+            <label for="userName">Your Name:</label>
+            <input type="text" id="userName" placeholder="e.g. Md Sayeed" required>
+
+            <label for="siteType">What type of website do you want?</label>
+            <select id="siteType" required>
+                <option value="">Select an option</option>
+                <option value="portfolio">Personal Portfolio</option>
+                <option value="blog">Blog Website</option>
+                <option value="ecommerce">E-commerce Shop</option>
+            </select>
+
+            <label for="siteTitle">Website Title / Name:</label>
+            <input type="text" id="siteTitle" placeholder="e.g. Sayeed's Portfolio" required>
+
+            <label for="primaryColor">Primary Color:</label>
+            <input type="color" id="primaryColor" value="#3498db">
+
+            <label for="fontFamily">Font Style:</label>
+            <select id="fontFamily">
+                <option value="Arial, sans-serif">Arial (Default)</option>
+                <option value="'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">Segoe UI (Modern)</option>
+                <option value="'Roboto', sans-serif">Roboto</option>
+                <option value="'Poppins', sans-serif">Poppins</option>
+            </select>
+
+            <label for="siteDescription">Short Website Description (for SEO):</label>
+            <textarea id="siteDescription" rows="3" placeholder="e.g. This is my personal portfolio website..."></textarea>
+
+            <label for="aboutText">About Me Section Text:</label>
+            <textarea id="aboutText" rows="5" placeholder="Write something about yourself here..."></textarea>
+
+            <label for="galleryImages">Upload Gallery / Project Images (multiple allowed):</label>
+            <input type="file" id="galleryImages" accept="image/*" multiple>
+            <small>(Hold Ctrl or Shift to select multiple images)</small>
+
+            <label for="faviconImage">Upload Favicon (website icon):</label>
+            <input type="file" id="faviconImage" accept="image/*">
+            <small>Best size: 32×32 or 64×64 px (PNG, ICO, JPG)</small>
+
+            <!-- নতুন Skills সেকশন -->
+            <h3 class="section-title">Your Skills (Add as many as you want)</h3>
+            <div id="skillsContainer"></div>
+            <button type="button" id="addSkillBtn" style="background: #8e44ad; color: white; margin: 15px auto; display: block; padding: 10px 20px; border: none; border-radius: 8px; cursor: pointer;">
+                + Add New Skill
+            </button>
+
+            <h3 class="section-title">Add Your Projects / Gigs / Work Samples</h3>
+            <div id="projectsContainer"></div>
+            <button type="button" id="addProjectBtn" style="background: #f39c12; color: white; margin: 15px auto; display: block;">
+                + Add New Project / Gig
+            </button>
+
+            <h3 class="section-title">Add Social Links / Contact</h3>
+            <div id="socialLinksContainer"></div>
+            <button type="button" id="addSocialLinkBtn" style="background: #3498db; color: white; margin: 10px auto; display: block;">
+                + Add New Link
+            </button>
+
+            <h3 class="section-title">SEO Options (to improve search ranking)</h3>
+
+            <label for="metaKeywords">Keywords (comma separated):</label>
+            <input type="text" id="metaKeywords" placeholder="portfolio, web developer, freelance, bangladesh">
+
+            <label for="metaAuthor">Author Name:</label>
+            <input type="text" id="metaAuthor" placeholder="Md Sayeed">
+
+            <label for="ogImage">Open Graph Image (for Facebook/WhatsApp sharing):</label>
+            <input type="file" id="ogImage" accept="image/*">
+            <small>Best size: 1200×630 px</small>
+
+            <label style="display: flex; align-items: center; margin: 20px 0; font-size: 16px;">
+                <input type="checkbox" id="darkMode" style="margin-right: 10px; width: 20px; height: 20px;">
+                Enable Dark Mode (black background)
+            </label>
+
+            <label for="contactEmail">Email for Contact Form (where messages will be sent):</label>
+            <input type="email" id="contactEmail" placeholder="your@email.com">
+
+            <button type="submit" style="background: #27ae60; width: 100%; margin-top: 30px;">Generate My Website</button>
+        </form>
+
+        <div id="result"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
